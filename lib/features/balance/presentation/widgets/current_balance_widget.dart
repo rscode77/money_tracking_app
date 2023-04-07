@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CurrentBalance extends StatelessWidget {
-  const CurrentBalance({super.key});
+class CurrentBalanceWidget extends StatelessWidget {
+  const CurrentBalanceWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class CurrentBalance extends StatelessWidget {
             //set text height becouse this font have huge spacing
             height: 1.h,
             fontSize: 18,
-            fontWeight: FontWeight.w300,
+            fontWeight: FontWeight.w400,
           ),
         ),
         Gap(8.h),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:money_tracking_app/features/user/blocs/bloc/user_bloc.dart';
+import 'package:money_tracking_app/features/balance/domain/entities/user_expence.dart';
 
+import 'features/balance/blocs/card/card_bloc.dart';
+import 'features/balance/blocs/expences/expences_bloc.dart';
 import 'route.dart' as route;
 
 void main() {
@@ -19,7 +21,10 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (BuildContext context) => UserBloc(),
+              create: (BuildContext context) => CardBloc(),
+            ),
+            BlocProvider(
+              create: (BuildContext context) => ExpencesBloc()..add(InitExpenceDatabaseEvent()),
             ),
           ],
           child: MaterialApp(

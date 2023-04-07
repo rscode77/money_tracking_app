@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'features/user/presentation/views/user_view.dart';
+import 'package:money_tracking_app/features/balance/presentation/views/balance_view.dart';
 
 const String userView = '/';
 
@@ -8,7 +7,7 @@ Route<dynamic> controller(RouteSettings settings) {
   WidgetBuilder builder;
   switch (settings.name) {
     case userView:
-      builder = (BuildContext context) => const UserView();
+      builder = (BuildContext context) => const BallanceView();
       break;
     default:
       throw ('Route does not exist');
