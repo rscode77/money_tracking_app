@@ -52,11 +52,12 @@ class ExpencesRepositoryImpl extends ExpencesRepository {
 
   @override
   Future<Database> initializeDatabase() async {
+    await deleteDatabase('expences_database.db');
     final database = openDatabase(
       join(await getDatabasesPath(), 'expences_database.db'),
       onCreate: (db, version) {
         return db.execute(
-          'CREATE TABLE expences(id INTEGER PRIMARY KEY, category TEXT, value FLOAT, lastFourDigits INTEGER)',
+          'CREATE TABLE expences(id INTEGER PRIMARY KEY, category TEXT, value FLOAT, time TEXT)',
         );
       },
       version: 1,

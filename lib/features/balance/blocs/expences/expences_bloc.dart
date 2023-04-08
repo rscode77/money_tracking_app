@@ -22,4 +22,4 @@ class ExpencesBloc extends Bloc<ExpencesEvent, ExpencesState> {
       emit(state.copyWith(userExpences: userExpences));
     });
   }
-} 
+}

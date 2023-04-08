@@ -6,60 +6,72 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../../constants/app_constants.dart';
 
 class ExpencesWidget extends StatelessWidget {
+  final int id;
+  final String category;
+  final String time;
+  final double value;
+
   const ExpencesWidget({
-    super.key,
-  });
+    Key? key,
+    required this.id,
+    required this.category,
+    required this.time,
+    required this.value,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          height: 55.h,
-          width: 55.h,
-          decoration: BoxDecoration(
-            color: mainGray,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(15),
-            ),
-          ),
-          child: const Icon(Icons.local_grocery_store),
-        ),
-        Gap(14.w),
-        Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'Grocery',
-              style: GoogleFonts.darkerGrotesque(
-                height: 1.h,
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
+    return Container(
+      margin: EdgeInsets.only(bottom: 8.h),
+      child: Row(
+        children: [
+          Container(
+            height: 55.h,
+            width: 55.h,
+            decoration: BoxDecoration(
+              color: mainGray,
+              borderRadius: const BorderRadius.all(
+                Radius.circular(15),
               ),
             ),
-            Gap(3.h),
-            Text(
-              '10 min ago',
-              style: GoogleFonts.darkerGrotesque(
-                height: 1.h,
-                color: textGray,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
-            ),
-          ],
-        ),
-        const Spacer(),
-        Text(
-          '- \$35',
-          style: GoogleFonts.darkerGrotesque(
-            height: 1.h,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
+            child: const Icon(Icons.local_grocery_store),
           ),
-        ),
-      ],
+          Gap(14.w),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                category,
+                style: GoogleFonts.darkerGrotesque(
+                  height: 1.h,
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Gap(3.h),
+              Text(
+                time,
+                style: GoogleFonts.darkerGrotesque(
+                  height: 1.h,
+                  color: textGray,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
+          const Spacer(),
+          Text(
+            '- \$$value',
+            style: GoogleFonts.darkerGrotesque(
+              height: 1.h,
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
