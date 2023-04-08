@@ -16,3 +16,5 @@ class InsertUserExpenceEvent extends ExpencesEvent {
     required this.userExpence,
   });
 }
+
+class GetExpencesEvent extends ExpencesEvent {}

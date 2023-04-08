@@ -29,9 +29,19 @@ class ExpencesRepositoryImpl extends ExpencesRepository {
   }
 
   @override
-  Future<List<UserExpence>> getExpences() {
-    // TODO: implement getExpences
-    throw UnimplementedError();
+  Future<List<UserExpence>> getExpences({required Database database}) async {
+    final db = database;
+
+    final List<Map<String, dynamic>> maps = await db.query('expences');
+
+    return List.generate(maps.length, (i) {
+      return UserExpence(
+        id: maps[i]['id'],
+        category: maps[i]['category'],
+        value: maps[i]['value'],
+        time: maps[i]['time'],
+      );
+    });
   }
 
   @override
