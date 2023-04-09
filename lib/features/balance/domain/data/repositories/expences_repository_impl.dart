@@ -29,7 +29,10 @@ class ExpencesRepositoryImpl extends ExpencesRepository {
   }
 
   @override
-  Future<List<UserExpence>> getExpences({required Database database}) async {
+  Future<List<UserExpence>> getExpences({
+    required Database database,
+    required String user,
+  }) async {
     final db = database;
 
     final List<Map<String, dynamic>> maps = await db.query('expences');
@@ -40,6 +43,7 @@ class ExpencesRepositoryImpl extends ExpencesRepository {
         category: maps[i]['category'],
         value: maps[i]['value'],
         time: maps[i]['time'],
+        user: maps[i]['user'],
       );
     });
   }
@@ -48,20 +52,5 @@ class ExpencesRepositoryImpl extends ExpencesRepository {
   Future<void> updateExpence() {
     // TODO: implement updateExpence
     throw UnimplementedError();
-  }
-
-  @override
-  Future<Database> initializeDatabase() async {
-    await deleteDatabase('expences_database.db');
-    final database = openDatabase(
-      join(await getDatabasesPath(), 'expences_database.db'),
-      onCreate: (db, version) {
-        return db.execute(
-          'CREATE TABLE expences(id INTEGER PRIMARY KEY, category TEXT, value FLOAT, time TEXT)',
-        );
-      },
-      version: 1,
-    );
-    return database;
   }
 }

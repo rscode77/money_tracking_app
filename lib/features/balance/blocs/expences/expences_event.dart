@@ -8,13 +8,26 @@ abstract class ExpencesEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class InitExpenceDatabaseEvent extends ExpencesEvent {}
-
 class InsertUserExpenceEvent extends ExpencesEvent {
+  final Database database;
+  final String user;
   final UserExpence userExpence;
   const InsertUserExpenceEvent({
+    required this.database,
+    required this.user,
     required this.userExpence,
   });
 }
 
-class GetExpencesEvent extends ExpencesEvent {}
+class GetExpencesEvent extends ExpencesEvent {
+  final String user;
+  final Database database;
+
+  const GetExpencesEvent({
+    required this.user,
+    required this.database,
+  });
+
+  @override
+  List<Object> get props => [user, database];
+}

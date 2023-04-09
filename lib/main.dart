@@ -5,6 +5,7 @@ import 'package:money_tracking_app/features/balance/domain/entities/user_expence
 
 import 'features/balance/blocs/card/card_bloc.dart';
 import 'features/balance/blocs/expences/expences_bloc.dart';
+import 'features/user/blocs/user/user_bloc.dart';
 import 'route.dart' as route;
 
 void main() {
@@ -21,10 +22,7 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (BuildContext context) => CardBloc(),
-            ),
-            BlocProvider(
-              create: (BuildContext context) => ExpencesBloc()..add(InitExpenceDatabaseEvent()),
+              create: (BuildContext context) => UserBloc()..add(InitDatabse()),
             ),
           ],
           child: MaterialApp(

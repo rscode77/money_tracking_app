@@ -5,11 +5,13 @@ class UserExpence {
   final String category;
   final String time;
   final double value;
+  final String user;
   UserExpence({
     required this.id,
     required this.category,
     required this.time,
     required this.value,
+    required this.user,
   });
 
   Map<String, dynamic> toMap() {
@@ -18,6 +20,7 @@ class UserExpence {
       'category': category,
       'time': time,
       'value': value,
+      'user': user,
     };
   }
 
