@@ -14,14 +14,19 @@ class ExpencesBloc extends Bloc<ExpencesEvent, ExpencesState> {
         database: event.database,
         userExpence: event.userExpence,
       );
-      add(GetExpencesEvent(database: event.database, user: event.user));
+      add(GetExpencesEvent(database: event.database));
     });
     on<GetExpencesEvent>((event, emit) async {
       var userExpences = await ExpencesRepositoryImpl().getExpences(
         database: event.database,
-        user: event.user,
       );
-      emit(state.copyWith(userExpences: userExpences));
+
+      double spent = 0;
+      for (var e in userExpences) {
+        spent += e.value;
+      }
+
+      emit(state.copyWith(userExpences: userExpences, spent: spent));
     });
   }
 }

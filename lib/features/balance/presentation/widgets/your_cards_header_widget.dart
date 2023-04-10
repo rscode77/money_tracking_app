@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class YourCardsHeaderWidget extends StatelessWidget {
   const YourCardsHeaderWidget({
@@ -8,9 +7,10 @@ class YourCardsHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       'Your cards',
-      style: GoogleFonts.darkerGrotesque(
+      style: TextStyle(
+        fontFamily: 'DarkGrotesque',
         fontSize: 18,
         fontWeight: FontWeight.w400,
       ),

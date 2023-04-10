@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../constants/app_constants.dart';
+import '../../blocs/card/card_bloc.dart';
+import '../../blocs/expences/expences_bloc.dart';
 
 class IncomingSpentWidget extends StatelessWidget {
   const IncomingSpentWidget({
@@ -29,21 +31,27 @@ class IncomingSpentWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Income',
-                style: GoogleFonts.darkerGrotesque(
+                style: TextStyle(
+                  fontFamily: 'DarkGrotesque',
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
                 ),
               ),
-              Text(
-                '\$ 2,090.20',
-                style: GoogleFonts.darkerGrotesque(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
+              BlocBuilder<CardBloc, CardState>(
+                builder: (context, state) {
+                  return Text(
+                    '\$ ${state.income}',
+                    style: const TextStyle(
+                      fontFamily: 'DarkGrotesque',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  );
+                },
               ),
             ],
           ),
@@ -58,21 +66,27 @@ class IncomingSpentWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 'Spent',
-                style: GoogleFonts.darkerGrotesque(
+                style: TextStyle(
+                  fontFamily: 'DarkGrotesque',
                   fontSize: 20,
                   fontWeight: FontWeight.w400,
                   color: Colors.white,
                 ),
               ),
-              Text(
-                '\$ 1,290',
-                style: GoogleFonts.darkerGrotesque(
-                  fontSize: 24,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.white,
-                ),
+              BlocBuilder<ExpencesBloc, ExpencesState>(
+                builder: (context, state) {
+                  return Text(
+                    '\$ ${state.spent}',
+                    style: const TextStyle(
+                      fontFamily: 'DarkGrotesque',
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  );
+                },
               ),
             ],
           ),

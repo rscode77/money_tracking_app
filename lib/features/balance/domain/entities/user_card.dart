@@ -1,13 +1,26 @@
+import 'dart:convert';
+
 class UserCard {
-  final int lastFourDigits;
+  final int? id;
+  final String lastFourDigits;
   final double value;
   final String name;
-  final String user;
 
   UserCard({
+    required this.id,
     required this.lastFourDigits,
     required this.value,
     required this.name,
-    required this.user,
   });
+
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'id': id,
+      'lastFourDigits': lastFourDigits,
+      'value': value,
+      'name': name,
+    };
+  }
+
+  String toJson() => json.encode(toMap());
 }

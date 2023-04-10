@@ -1,10 +1,24 @@
 part of 'card_bloc.dart';
 
-abstract class CardState extends Equatable {
-  const CardState();
-  
-  @override
-  List<Object> get props => [];
-}
+class CardState extends Equatable {
+  const CardState({
+    required this.income,
+    required this.userCards,
+  });
 
-class CardInitial extends CardState {}
+  final double income;
+  final List<UserCard> userCards;
+
+  @override
+  List<Object> get props => [income, userCards];
+
+  CardState copyWith({
+    double? income,
+    List<UserCard>? userCards,
+  }) {
+    return CardState(
+      income: income ?? this.income,
+      userCards: userCards ?? this.userCards,
+    );
+  }
+}

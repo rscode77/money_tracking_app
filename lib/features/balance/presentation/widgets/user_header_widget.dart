@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
 class UserHeaderWidget extends StatelessWidget {
+  final Function()? menuPressed;
   const UserHeaderWidget({
-    super.key,
-  });
+    Key? key,
+    required this.menuPressed,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: const [
-        Icon(Icons.menu_rounded),
-        Icon(Icons.person_outline_rounded),
-      ],
+    return InkWell(
+      onTap: menuPressed,
+      child: const Icon(Icons.menu_rounded),
     );
   }
 }

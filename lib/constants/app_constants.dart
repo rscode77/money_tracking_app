@@ -6,3 +6,5 @@ Color spacerColor = const Color.fromARGB(255, 91, 93, 231);
 Color mainGray = const Color.fromARGB(255, 243, 244, 246);
 Color textGray = const Color.fromARGB(255, 184, 189, 198);
 Color borderGray = const Color.fromARGB(255, 227, 230, 234);
+Color black = Colors.black;
+Color dropDownFieldLine = const Color.fromARGB(255, 160, 160, 160);

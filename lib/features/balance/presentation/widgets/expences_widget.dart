@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../constants/app_constants.dart';
 
@@ -43,7 +42,8 @@ class ExpencesWidget extends StatelessWidget {
             children: [
               Text(
                 category,
-                style: GoogleFonts.darkerGrotesque(
+                style: TextStyle(
+                  fontFamily: 'DarkGrotesque',
                   height: 1.h,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
@@ -52,7 +52,8 @@ class ExpencesWidget extends StatelessWidget {
               Gap(3.h),
               Text(
                 time,
-                style: GoogleFonts.darkerGrotesque(
+                style: TextStyle(
+                  fontFamily: 'DarkGrotesque',
                   height: 1.h,
                   color: textGray,
                   fontSize: 16,
@@ -64,7 +65,8 @@ class ExpencesWidget extends StatelessWidget {
           const Spacer(),
           Text(
             '- \$$value',
-            style: GoogleFonts.darkerGrotesque(
+            style: TextStyle(
+              fontFamily: 'DarkGrotesque',
               height: 1.h,
               fontSize: 18,
               fontWeight: FontWeight.w700,

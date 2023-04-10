@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../constants/app_constants.dart';
 
 class YourCardsWidget extends StatelessWidget {
-  const YourCardsWidget({super.key});
+  final String lastFourDigit;
+  final String name;
+  final int id;
+  final double value;
+
+  const YourCardsWidget({
+    Key? key,
+    required this.lastFourDigit,
+    required this.name,
+    required this.id,
+    required this.value,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,9 +42,10 @@ class YourCardsWidget extends StatelessWidget {
                   ),
                 ),
                 child: Center(
-                  child: Text('· · · · 3490',
+                  child: Text('· · · · $lastFourDigit',
                       textAlign: TextAlign.center,
-                      style: GoogleFonts.darkerGrotesque(
+                      style: TextStyle(
+                        fontFamily: 'DarkGrotesque',
                         height: 1.h,
                         fontSize: 11,
                         fontWeight: FontWeight.w400,
@@ -48,16 +59,18 @@ class YourCardsWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '\$1,020.92',
-                    style: GoogleFonts.darkerGrotesque(
+                    '\$$value',
+                    style: TextStyle(
+                      fontFamily: 'DarkGrotesque',
                       height: 1.h,
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text(
-                    'Visa',
-                    style: GoogleFonts.darkerGrotesque(
+                    name,
+                    style: TextStyle(
+                      fontFamily: 'DarkGrotesque',
                       color: textGray,
                       height: 1.h,
                       fontSize: 16,
@@ -66,15 +79,10 @@ class YourCardsWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              const Spacer(),
-              Icon(
-                Icons.arrow_forward_ios_rounded,
-                size: 20.h,
-              ),
-              Gap(14.w),
             ],
           ),
         ),
+        Gap(8.h),
       ],
     );
   }

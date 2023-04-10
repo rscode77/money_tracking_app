@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../entities/user_card.dart';
 
 abstract class CardRepository {
-  Future<List<UserCard>> getCards();
-  Future<UserCard> getCard();
-  Future<void> addCard();
-  Future<void> updateCard();
-  Future<void> deleteCard();
+  Future<List<UserCard>> getCards({required Database database});
+  Future<void> insertCard({required Database database, required UserCard userCard});
 }
